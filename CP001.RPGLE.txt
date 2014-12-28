@@ -1,0 +1,61 @@
+      *--------------------------------------------------------------------     
+      *                                                                         
+      * IFS APIs - Prototypes                                                   
+      *                                                                         
+      * CC27749 01.05.2010 Charlie McLean                                       
+      *         Copied from IFSPROTO from IFSSRC in RPGISCOOL                   
+      *                                                                         
+      *         #include <fcntl.h>                                              
+      *         int open(const char *path, int oflag, . . .);                   
+      *                                                                         
+      *         Doc and code example(s) from SG24-5402:                         
+      *         'Who Knew You Could Do That with RPG IV?                        
+      *          A Sorcerer's Guide to System Access andMore '                  
+      *                                                                         
+      *---------------------------------------------------------------------    
+     D open            PR            10I 0 ExtProc('open')                      
+     D  path@                          *   Value options(*String)               
+     D  oflag                        10I 0 Value                                
+     D  mode                         10U 0 Value Options(*nopass)               
+     D  codepage                     10U 0 Value Options(*nopass)               
+                                                                                
+      * read() -- Read from Descriptor                                          
+      *  From System API Reference OS/400 UNIX-Type APIs                        
+      *                                                                         
+      * #include <unistd.h>                                                     
+      *  ssize_t read(int file_descriptor,                                      
+      *               void *buf, size_t nbyte);                                 
+     D read            PR            10I 0 Extproc('read')                      
+     D  FileDescI                    10I 0 Value                                
+     D  bufferI@                       *   Value                                
+     D  nbyte                        10U 0 Value                                
+                                                                                
+      * write() -- Write to Descriptor                                          
+      *  From System API Reference OS/400 UNIX-Type APIs                        
+      *                                                                         
+      * #include <unistd.h>                                                     
+      *  ssize_t write                                                          
+      *  (int file_descriptor, const void *buf, size_t nbyte);                  
+     D write           PR            10I 0 Extproc('write')                     
+     D  FileDescO                    10I 0 Value                                
+     D  bufferO@                       *   Value                                
+     D  nbyte                        10U 0 Value                                
+                                                                                
+      * close() -- Close File or Socket Descriptor                              
+      *  From System API Reference OS/400 UNIX-Type APIs                        
+      *                                                                         
+      * #include <unistd.h>                                                     
+      *  int close(int fildes);                                                 
+     D close           PR            10I 0 Extproc('close')                     
+     D  FileDesc                     10I 0 Value                                
+                                                                                
+      * lseek()--Set File Read/Write Offset                                     
+      *  From System API Reference OS/400 UNIX-Type APIs                        
+      *                                                                         
+      * #include <unistd.h>                                                  ¦  
+      *  off_t lseek(int file_descriptor, off_t offset, int whence);            
+     D lseek           PR            10I 0 Extproc('lseek')                     
+     D  filedesc                     10I 0 Value                                
+     D  offset                       10I 0 Value                                
+     D  whence                       10I 0 Value                                
+                                                                                

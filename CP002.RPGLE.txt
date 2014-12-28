@@ -1,0 +1,24 @@
+      *--------------------------------------------------------------------     
+      *                                                                         
+      * IFS APIs - Prototype for PCS001 display error                           
+      *                                                                         
+      * CC27749 01.05.2010 Charlie McLean                                       
+      *         Copied from ERRPROTO from IFSSRC in RPGISCOOL                   
+      *                                                                         
+      *                                                                         
+      *         Doc and code example(s) from SG24-5402:                         
+      *         'Who Knew You Could Do That with RPG IV?                        
+      *          A Sorcerer's Guide to System Access andMore '                  
+      *                                                                         
+      *---------------------------------------------------------------------    
+                                                                                
+      * Prototype for DspError subprocedure                                     
+     DDspError         PR                  Extproc('PCS001')                    
+     D text                          10A   Const                                
+                                                                                
+      * Prototype for __errno() and strerror()                                  
+      *    From the ILE C for AS/400 Run-Time Library Reference                 
+     DGetErrNo         PR              *   Extproc('__errno')                   
+                                                                                
+     DStrError         PR              *   ExtProc('strerror')                  
+     D errorNo                       10I 0 Value                                

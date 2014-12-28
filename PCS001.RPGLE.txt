@@ -1,0 +1,39 @@
+      *--------------------------------------------------------------------                         
+      *                                                                                             
+      * IFS APIs - Error subroutine module (subprocedure)                                           
+      *                                                                                             
+      * CC27749 01.05.2010 Charlie McLean                                                           
+      *         Copied from DSPERROR from IFSSRC in RPGISCOOL                                       
+      *                                                                                             
+      *         CRTRPGMOD MODULE(lib/PCS001) SRCFILE(file)                                  
+      *                                                                                             
+      *         Used to display the error nbr, the error text and a                                 
+      *         location parameter using the DSPLY (display) op-code.                               
+      *         Doc and code example(s) from SG24-5402:                                             
+      *         'Who Knew You Could Do That with RPG IV?                                            
+      *          A Sorcerer’s Guide to System Access andMore '                                      
+      *                                                                                             
+      *---------------------------------------------------------------------                        
+                                                                                                    
+     H nomain BNDDIR('QC2LE')                                                                       
+                                                                                                    
+      /Copy JDECPY2,CP002                                                                           
+                                                                                                    
+     PDspError         B                   Export                                                   
+     DDspError         PI                                                                           
+     D text                          10A   Const                                                    
+                                                                                                    
+      * Variables for __errno() and strerror() APIs                                                 
+     DerrorNo@         S               *   Inz                                                      
+     D errorNo         S             10I 0 Based(Errorno@)                                          
+     DerrorMsg@        S               *   Inz                                                      
+     D errorMsg        S            100A   Based(errorMsg@)                                         
+     Derrortxt         S             52A   Inz(*blank)                                              
+                                                                                                    
+     C                   Eval      errorNo@ = GetErrNo                                              
+     C                   Eval      errorMsg@ = StrError(errorNo)                                    
+     C                   Eval      errortxt =%trim(text) + '->' +                                   
+     C                                         %char(errorNo)                                       
+     C                             + ':' + %subst(errormsg : 1 : 37)                                
+     C     errortxt      Dsply                                                                      
+     P                 E                                                                            

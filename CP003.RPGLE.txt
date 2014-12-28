@@ -1,0 +1,94 @@
+      *--------------------------------------------------------------------     
+      *                                                                         
+      * IFS APIs - open() API structure definition or                           
+      *                                                                         
+      * CC27749 01.05.2010 Charlie McLean                                       
+      *         Copied from OPENDFN from IFSSRC in RPGISCOOL                    
+      *                                                                         
+      *         structure definition for openfunction                           
+      *         from QSYSINC/H.FCNTL member                                     
+      *                                                                         
+      *         Doc and code example(s) from SG24-5402:                         
+      *         'Who Knew You Could Do That with RPG IV?                        
+      *          A Sorcerer's Guide to System Access andMore '                  
+      *                                                                         
+      *---------------------------------------------------------------------    
+                                                                                
+      */*******************************************************************/    
+      */*   File Access Modes                                             */    
+      */*******************************************************************/    
+      *#define O_RDONLY   00001        /* Open for reading only           */    
+     D O_RDONLY        S             10I 0 INZ(x'01')                           
+      *#define O_WRONLY   00002        /* Open for writing only           */    
+     D O_WRONLY        S             10I 0 INZ(x'02')                           
+      *#define O_RDWR     00004        /* Open for reading and writing    */    
+     D O_RDWR          S             10I 0 INZ(x'04')                           
+      *#define O_CREAT      00010      /* Create file if it doesn't exist */    
+     D O_CREATE        S             10I 0 INZ(x'08')                           
+      *#define O_EXCL       00020      /* Exclusive use flag              */    
+     D O_EXCL          S             10I 0 INZ(x'10')                           
+      */*                   00040         reserved                        */    
+      *#define O_TRUNC      00100      /* Truncate flag                   */    
+     D O_TRUNC         S             10I 0 INZ(x'40')                           
+      */*******************************************************************/    
+      */*   File Status Flags                                             */    
+      */*******************************************************************/    
+      *#define O_CODEPAGE   040000000  /* code page flag                  */    
+     D O_CODEPAGE      S             10I 0 INZ(x'800000')                       
+      *#define O_TEXTDATA  0100000000  /* text data flag                  */    
+     D O_TEXTDATA      S             10I 0 INZ(x'01000000')                     
+      *#define O_APPEND     00400      /* Set append mode                 */    
+     D O_APPEND        S             10I 0 INZ(x'0100')                         
+      *#define O_LARGEFILE  004000000000  /* Large file access            */    
+     D O_LARGEFILE     S             10I 0 INZ(x'20000000')                     
+      *#define O_INHERITMODE 001000000000 /* inherit mode flag            */    
+     D O_INHERITMODE   S             10I 0 INZ(x'08000000')                     
+      */*******************************************************************/    
+      */*   Share Mode Values                                             */    
+      */*******************************************************************/    
+      *#define O_SHARE_RDONLY 000000200000 /* Share with readers only     */    
+     D O_SHARE_RDONLY  S             10I 0 INZ(x'010000')                       
+      *#define O_SHARE_WRONLY 000000400000 /* Share with writers only     */    
+     D O_SHARE_WRONLY  S             10I 0 INZ(x'020000')                       
+      *#define O_SHARE_RDWR   000001000000 /* Share with readers and            
+      *                                       writers                     */    
+     D O_SHARE_RDWR    S             10I 0 INZ(x'040000')                       
+      *#define O_SHARE_NONE   000002000000 /* Share with neither readers        
+      *                                       nor writers                 */    
+     D O_SHARE_NONE    S             10I 0 INZ(x'080000')                       
+                                                                                
+      * from QSYSINC/SYS.STAT member                                            
+      */*********************************************************************/  
+      */* Definitions of File Modes and File Types                          */  
+      */*********************************************************************/  
+      *   #define S_IRUSR 0000400    /* Read for owner                      */  
+     D S_IRUSR         S             10I 0 INZ(x'0100')                         
+      *   #define S_IWUSR 0000200    /* Write for owner                     */  
+     D S_IWUSR         S             10I 0 INZ(x'80')                           
+      *   #define S_IXUSR 0000100    /* Execute and Search for owner        */  
+     D S_IXUSR         S             10I 0 INZ(x'40')                           
+      *   #define S_IRWXU (S_IRUSR|S_IWUSR|S_IXUSR)  /* Read, Write,            
+      *                                                 Execute for owner   */  
+     D S_IRWXU         S             10I 0 INZ(x'01C0')                         
+                                                                                
+      *   #define S_IRGRP 0000040         /* Read for group                 */  
+     D S_IRGRP         S             10I 0 INZ(x'20')                           
+      *   #define S_IWGRP 0000020         /* Write for group                */  
+     D S_IWGRP         S             10I 0 INZ(x'10')                           
+      *   #define S_IXGRP 0000010         /* Execute and Search for group   */  
+     D S_IXGRP         S             10I 0 INZ(x'08')                           
+      *   #define S_IRWXG (S_IRGRP|S_IWGRP|S_IXGRP)  /* Read, Write,            
+      *                                                 Execute for group   */  
+     D S_IRWXG         S             10I 0 INZ(x'38')                           
+                                                                                
+      *   #define S_IROTH 0000004         /* Read for other                 */  
+     D S_IROTH         S             10I 0 INZ(x'04')                           
+      *   #define S_IWOTH 0000002         /* Write for other                */  
+     D S_IWOTH         S             10I 0 INZ(x'02')                           
+      *   #define S_IXOTH 0000001         /* Execute and Search for other   */  
+     D S_IXOTH         S             10I 0 INZ(x'01')                           
+      *   #define S_IRWXO (S_IROTH|S_IWOTH|S_IXOTH)  /* Read, Write,            
+      *                                                 Execute for other   */  
+     D S_IRWXO         S             10I 0 INZ(x'07')                           
+                                                                                
+                                                                                
